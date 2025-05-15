@@ -1,11 +1,24 @@
-:root {
+ /* :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
-  font-weight: 400;}
+  font-weight: 400;}  */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,700,900');
 
-
-
-
+:root {
+    --font-base:`lexend`, sans-serif;;
+    --font-second-base:`inter`, sans-serif;
+    --bg-color:#111;
+    ---primary-color:#ffffff;
+    --secondary-color:#FF0000;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #111;
+}
 
 
 
