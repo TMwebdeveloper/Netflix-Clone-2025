@@ -2,14 +2,19 @@
   position: relative;
     margin-top: -10vh;
     height: 80vh;
-    /* margin-bottom: -80px; */
+    margin-bottom: -80px;
     color: white;
     object-fit: contain;
+    overflow: hidden;
+    z-index: 1;
 }
 .banner_contents{
-    margin-left: 30px;
-    padding-top: 300px;
-    /* height: 190px; */
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  left: 30px;
+  padding-bottom: 170px;
+  min-width: 50%;
 }
 .banner_title{
     font-size: 3rem;
@@ -50,7 +55,8 @@
   }
 .banner_fadeBottom{
 position: absolute;
-height: 20vh;
+z-index: 1;
+height: 40vh;
 bottom: 0;
 left: 0;
 width: 100%;

@@ -26,5 +26,7 @@ padding: 20px;
 .row {
   margin-left: 20px;
   color: white;
+  position: relative;
+  z-index: 1;
 
 }

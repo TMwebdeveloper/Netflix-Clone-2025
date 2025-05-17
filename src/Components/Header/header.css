@@ -11,8 +11,7 @@
     color: white;
     transition: all 0.5s;
     transition-timing-function: ease-in;
-    z-index: 1; /*always on top*/
-    /* background-color: red; */
+    z-index: 10; 
 }
 .nav_black{
     background-color: rgb(20, 20, 20);
