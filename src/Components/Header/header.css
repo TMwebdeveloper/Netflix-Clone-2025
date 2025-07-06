@@ -1,27 +1,25 @@
-.header_outer_container{
+.header_outer_container {
     position: sticky;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: rgb(148, 132, 132); */
     background-color: rgb(20, 20, 20);
-    /* background-color: transparent; */
-    height: 10vh;  /*flexible in view height  */
+    height: 10vh;
     color: white;
-    transition: all 0.5s;
-    transition-timing-function: ease-in;
-    z-index: 10; 
+    transition: all 0.5s ease-in;
+    z-index: 10;
 }
-.nav_black{
+
+.nav_black {
     background-color: rgb(20, 20, 20);
 }
-.header_container{
+
+.header_container {
     width: 90%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .header_left ul {
@@ -31,13 +29,41 @@
     align-items: center;
     list-style: none;
 }
-.Header_logo{
-    width: 90px;
-} 
-.header_right ul{
+
+.header_right ul {
     width: 140%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+}
+
+/* === HOVER EFFECTS === */
+
+.header_left ul li {
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header_left ul li:hover {
+    color: #e50914; /* Netflix red */
+    transform: scale(1.05);
+    text-decoration: underline;
+}
+
+.header_right ul li {
+    color: white;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.header_right ul li:hover {
+    color: #e50914;
+    transform: scale(1.2);
+}
+
+.Header_logo {
+    width: 90px;
 }
