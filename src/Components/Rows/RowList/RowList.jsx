@@ -1,10 +1,11 @@
 import React from 'react'
 import Row from '../Row/Row';
 import requests from '../../../utils/requests'; // My api cofig
-
+//It returns multiple Row components
 const RowList = () => {
   return (
     <>
+    
       <Row 
       title="NETFLIX ORIGINALS"
       fetchUrl={requests.fetchNetflixOriginals}

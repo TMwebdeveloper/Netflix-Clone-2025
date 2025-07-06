@@ -10,69 +10,72 @@ import movieTrailer from "movie-trailer";
 
 
 const Row = ({ title, fetchUrl, isLargeRow}) => {
-    const [movies, setMovie] = useState([]);
-    const [trailerUrl, setTrailerUrl] = useState("");
+  //props
+  const [movies, setMovie] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
-    const base_url ="https://image.tmdb.org/t/p/original";
+  const base_url = "https://image.tmdb.org/t/p/original";
 
-
-    useEffect(() => {
-      (async () => {
-        try {
-          console.log(fetchUrl);
-          const request = await axios.get(fetchUrl);
-          console.log(request);
-          setMovie(request.data.results);
-        } catch (error) {
-          console.log("error", error);
-        }
-      })();
-    }, [fetchUrl]);
-    const handleClick =(movie) =>{
-        if (trailerUrl) {
-            setTrailerUrl("")
-        } else {
-            movieTrailer(movie?.title || movie?.original_name || "")
-              .then((url) => {
-                console.log(url);
-                const urlParms = new URLSearchParams(new URL(url).search);
-                console.log(urlParms);
-                console.log(urlParms.get("v"));
-                setTrailerUrl(urlParms.get("v"));
-              })
-              .catch((error) => console.error("Trailer not found:", error));
-        }
+  //Data Fetching with useEffect
+  //Fetches data from the TMDB API using Axios
+  useEffect(() => {
+    (async () => {
+      try {
+        console.log(fetchUrl);
+        const request = await axios.get(fetchUrl);
+        console.log(request);
+        setMovie(request.data.results);
+      } catch (error) {
+        console.log("error", error);
+      }
+    })();
+  }, [fetchUrl]);
+  // Trailer Toggle Function
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl("");
+    } else {
+      movieTrailer(movie?.title || movie?.original_name || "")
+        .then((url) => {
+          console.log(url);
+          const urlParms = new URLSearchParams(new URL(url).search);
+          console.log(urlParms);
+          console.log(urlParms.get("v"));
+          setTrailerUrl(urlParms.get("v"));
+        })
+        .catch((error) => console.error("Trailer not found:", error));
     }
+  };
+  // YouTube Player Options
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
-    const opts ={
-        height:"390",
-        width:"100%",
-        playerVars:{
-            autoplay: 1,
-        },
-    }
-
-    return (
-      <div className="row">
-        <h1 className="title">{title}</h1>
-        <div className="row__posters">
-          {movies?.map((movie, index) => (
-            <img
-              onClick={() => handleClick(movie)}
-              key={index}
-              src={`${base_url}${
-                isLargeRow ? movie.poster_path : movie.backdrop_path
-              }`}
-              alt={movie.name}
-              className={`row__poster ${isLargeRow && "row_posterLarge"}`}
-            />
-          ))}
-        </div>
-        <div style={{ padding: "40px" }}>
-          {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
-        </div>
+  return (
+    <div className="row">
+      <h1 className="title">{title}</h1>
+      <div className="row__posters">
+        {movies?.map((movie, index) => (
+          <img
+            onClick={() => handleClick(movie)}
+            key={index}
+            src={`${base_url}${
+              isLargeRow ? movie.poster_path : movie.backdrop_path
+            }`}
+            alt={movie.name}
+            className={`row__poster ${isLargeRow && "row_posterLarge"}`}
+          />
+        ))}
       </div>
-    );
+      <div style={{ padding: "40px" }}>
+        {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
+      </div>
+    </div>
+  );
 }
     
   
